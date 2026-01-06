@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Kue Enak</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./src/style.css">
+  </head>
+  <body>
+
+    <nav class="navbar">
+      <div class="logo">🍰 KueEnak</div>
+      
+      <div class="burger-menu" id="burgerBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#" id="adminLink">Login Admin</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <h1>Pesan Kue Favoritmu</h1>
+      <p>Fresh dari oven, langsung kirim ke rumah.</p>
+    </header>
+
+    <main class="container">
+      <h2>Menu Kami</h2>
+      <div id="product-list" class="grid-container">
+        <p>Memuat menu...</p> 
+      </div>
+    </main>
+
+    <div class="floating-cart" id="cartBtn">
+      <i class="fa-solid fa-whatsapp"></i> Pesan (<span id="cartCount">0</span>)
+    </div>
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="toggleModal('loginModal')">&times;</span>
+        <h3>Login Admin</h3>
+        <input type="email" id="emailInput" placeholder="Email Admin">
+        <input type="password" id="passInput" placeholder="Password">
+        <button onclick="handleLogin()" class="btn-primary">Masuk</button>
+      </div>
+    </div>
+
+    <div id="addModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="toggleModal('addModal')">&times;</span>
+        <h3>Tambah Menu Baru</h3>
+        <input type="text" id="newTitle" placeholder="Nama Kue (cth: Bolu Susu)">
+        <input type="number" id="newPrice" placeholder="Harga (cth: 50000)">
+        <input type="text" id="newImg" placeholder="Link URL Gambar Kue">
+        <button onclick="addProduct()" class="btn-primary">Simpan Menu</button>
+      </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="toggleModal('checkoutModal')">&times;</span>
+        <h3>Detail Pesanan</h3>
+        <div id="cartSummary"></div> <hr>
+        <p><b>Total: Rp <span id="grandTotal">0</span></b></p>
+        
+        <h4>Data Pengiriman</h4>
+        <input type="text" id="custName" placeholder="Nama Pemesan">
+        <input type="text" id="custAddress" placeholder="Alamat Lengkap">
+        <label>Waktu Pengantaran:</label>
+        <input type="datetime-local" id="deliveryTime">
+        
+        <button onclick="sendToWhatsapp()" class="btn-wa">
+          <i class="fa-brands fa-whatsapp"></i> Kirim Pesanan ke WA
+        </button>
+      </div>
+    </div>
+
+    <button id="addBtnFloat" class="floating-add" onclick="toggleModal('addModal')" style="display:none;">+</button>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
